@@ -3,24 +3,23 @@ using namespace std;
 
 class Nodo{
 private:
-    char dato;
+    string dato;
     Nodo* inferior;
 public:
     Nodo(void);
-    Nodo(char d, Nodo* i);
+    Nodo(string d, Nodo* i);
     void muestraDatos(void);
     void muestraDato(void);
     void pideDatos(void);
-    char retornaDato(void);
-    void modificaDato(char d);
+    string retornaDato(void);
+    void modificaDato(string d);
     Nodo* retornaInferior(void);
     void modificaInferior(Nodo* i);
 };
 Nodo::Nodo(void){
-    dato = 0;
     inferior = NULL;
 }
-Nodo::Nodo(char d, Nodo* i){
+Nodo::Nodo(string d, Nodo* i){
     dato = d;
     inferior = i;
 }
@@ -39,10 +38,10 @@ void Nodo::muestraDato(void){
 void Nodo::pideDatos(void){
     cout<<"Dame mi dato: ";cin>>dato;
 }
-char Nodo::retornaDato(void){
+string Nodo::retornaDato(void){
     return dato;
 }
-void Nodo::modificaDato(char d){
+void Nodo::modificaDato(string d){
     dato = d;
 }
 Nodo* Nodo::retornaInferior(void){
@@ -57,37 +56,37 @@ int main(void){
 
     tope = NULL;//Pila vacia
 
-    tope = new Nodo('a', tope);    //Push a la pila, entra 'a' primero
-    tope = new Nodo('b', tope);    //Push a la pila, entra 'b'
-    tope = new Nodo('c', tope);    //Push a la pila, entra 'c'
-    tope = new Nodo('d', tope);   //Push a la pila, entra 'd' al final
+    tope = new Nodo("Una", tope);    //Push a la pila, entra "Una" primero
+    tope = new Nodo("cadena", tope);    //Push a la pila, entra "cadena"
+    tope = new Nodo("de", tope);    //Push a la pila, entra "de"
+    tope = new Nodo("caracteres", tope);   //Push a la pila, entra "caracteres" al final
 
 
     Nodo* aux;
-    char d;
+    string d;
 
-    //Pop a la pila, sale 'd' primero (ultimo en entrar)
+    //Pop a la pila, sale "caracteres" primero (ultimo en entrar)
     d = tope->retornaDato();
     aux = tope;
     tope = tope->retornaInferior();
     delete aux;
     cout << d << endl;
 
-    //Pop a la pila, sale 'c'
+    //Pop a la pila, sale "de"
     d = tope->retornaDato();
     aux = tope;
     tope = tope->retornaInferior();
     delete aux;
     cout << d << endl;
 
-    //Pop a la pila, sale 'b'
+    //Pop a la pila, sale "cadena"
     d = tope->retornaDato();
     aux = tope;
     tope = tope->retornaInferior();
     delete aux;
     cout << d << endl;
 
-    //Pop a la pila, sale 'a' al final  (primero en entrar)
+    //Pop a la pila, sale "Una" al final  (primero en entrar)
     d = tope->retornaDato();
     aux = tope;
     tope = tope->retornaInferior();
